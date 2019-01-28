@@ -1,0 +1,66 @@
+﻿{
+    "environments": [
+        {
+            "BUILD_ROOT": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+            "INSTALL_ROOT": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+            "STATIC_LINK_LIBS": "-DSTATIC_LINK_LIBS=\"YES\" ",
+            "gtest_INCLUDE_DIR": "C:\\MyCode\\MyLib\\googletest\\include",
+            "gtest_LIB_DIR": "C:\\MyCode\\MyLib\\googletest\\lib",
+            "TRAVIS_BUILD_NUMBER": "1"
+        }
+    ],
+    "configurations": [
+        {
+            "name": "x64-Debug",
+            "generator": "Ninja",
+            "configurationType": "Debug",
+            "inheritEnvironments": [
+                "msvc_x64_x64"
+            ],
+            "buildRoot": "${env.BUILD_ROOT}",
+            "installRoot": "${env.INSTALL_ROOT}",
+            "cmakeCommandArgs": "",
+            "buildCommandArgs": "-v",
+            "ctestCommandArgs": ""
+        },
+        {
+            "name": "x64-Release",
+            "generator": "Ninja",
+            "configurationType": "RelWithDebInfo",
+            "inheritEnvironments": [
+                "msvc_x64_x64"
+            ],
+            "buildRoot": "${env.BUILD_ROOT}",
+            "installRoot": "${env.INSTALL_ROOT}",
+            "cmakeCommandArgs": "",
+            "buildCommandArgs": "-v",
+            "ctestCommandArgs": ""
+        },
+        {
+            "name": "x64-Debug static link",
+            "generator": "Ninja",
+            "configurationType": "Debug",
+            "inheritEnvironments": [
+                "msvc_x64_x64"
+            ],
+            "buildRoot": "${env.BUILD_ROOT}",
+            "installRoot": "${env.INSTALL_ROOT}",
+            "cmakeCommandArgs": "${env.STATIC_LINK_LIBS}",
+            "buildCommandArgs": "-v",
+            "ctestCommandArgs": ""
+        },
+        {
+            "name": "x64-Release static link",
+            "generator": "Ninja",
+            "configurationType": "RelWithDebInfo",
+            "inheritEnvironments": [
+                "msvc_x64_x64"
+            ],
+            "buildRoot": "${env.BUILD_ROOT}",
+            "installRoot": "${env.INSTALL_ROOT}",
+            "cmakeCommandArgs": "${env.STATIC_LINK_LIBS}",
+            "buildCommandArgs": "-v",
+            "ctestCommandArgs": ""
+        }
+    ]
+}
