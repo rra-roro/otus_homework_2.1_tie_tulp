@@ -4,8 +4,8 @@
             "BUILD_ROOT": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
             "INSTALL_ROOT": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
             "STATIC_LINK_LIBS": "-DSTATIC_LINK_LIBS=\"YES\" ",
-            "gtest_INCLUDE_DIR": "C:\\MyCode\\MyLib\\googletest\\include",
-            "gtest_LIB_DIR": "C:\\MyCode\\MyLib\\googletest\\lib",
+            "GTEST_INCLUDE_DIR": "C:\\MyCode\\MyLib\\googletest\\include",
+            "GTEST_ROOT": "C:\\MyCode\\MyLib\\googletest",
             "TRAVIS_BUILD_NUMBER": "1"
         }
     ],
