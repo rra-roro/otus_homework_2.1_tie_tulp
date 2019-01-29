@@ -140,7 +140,7 @@ class custom_tuple
       }
 
       template <size_t Index>
-      const auto i_get() const noexcept
+      auto i_get() const noexcept
       {
             using type = typename std::tuple_element<Index, custom_tuple<Types...>>::type;
             std::reference_wrapper<type> ref = std::any_cast<std::reference_wrapper<type>>(list_binding_args[Index]);
@@ -162,13 +162,13 @@ class custom_tuple
 template <size_t Index, typename... _Types>
 auto& get(custom_tuple<_Types...>& _Tuple)
 {
-      return _Tuple.i_get<Index>();
+      return _Tuple.template i_get<Index>();
 }
 
 template <size_t Index, typename... _Types>
 auto get(const custom_tuple<_Types...>& _Tuple)
 {
-      return _Tuple.i_get<Index>();
+      return _Tuple.template i_get<Index>();
 }
 
 
