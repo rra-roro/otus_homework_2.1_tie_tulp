@@ -29,7 +29,7 @@ script:
 - cmake --build . --target test
 - cmake --build . --target package
 - ls *
-- ls src_test/*
+- ./src_test/test_tie_tulp
 deploy:
   provider: script
   skip_cleanup: true
