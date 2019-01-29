@@ -15,7 +15,10 @@ before_script:
 - cd googletest-release-1.8.0
 - CXX=/usr/bin/g++-8 CC=/usr/bin/gcc-8
 - cmake -DBUILD_SHARED_LIBS=ON .
-- sudo cmake --build . --target install
+- make
+- sudo cp -a googletest/include/gtest /usr/include
+- sudo cp -a googletest/libgtest_main.so /usr/lib/
+- sudo cp -a googletest/libgtest.so /usr/lib/
 - sudo ldconfig -v | grep gtest
 - cd - 
 
