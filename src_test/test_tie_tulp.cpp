@@ -170,15 +170,14 @@ TEST(CustomTupleUtility, TupleSize)
 }
 
 
-
-TEST(CustomTupleUtility, get)
+TEST(CustomTupleUtility, get_by_value)
 {
       std::string str1 = "str1";
       int iVar1 = 10;
 
       custom_tuple tpl1(str1, iVar1);
       auto [a1, b1] = tpl1;
-    
+
       ASSERT_TRUE(a1 == "str1");
       ASSERT_TRUE(b1 == 10);
 
@@ -187,6 +186,12 @@ TEST(CustomTupleUtility, get)
 
       ASSERT_FALSE(str1 == "qqq");
       ASSERT_FALSE(iVar1 == 20);
+}
+
+TEST(CustomTupleUtility, get_by_lvalue_ref)
+{
+      std::string str1 = "str1";
+      int iVar1 = 10;
 
       custom_tuple tpl2(str1, iVar1);
       auto& [a2, b2] = tpl2;

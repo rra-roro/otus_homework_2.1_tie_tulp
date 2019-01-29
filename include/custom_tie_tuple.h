@@ -10,7 +10,7 @@ template <typename... Types>
 class custom_tuple;
 
 template <class>
-   inline constexpr bool _Always_false = false;
+inline constexpr bool _Always_false = false;
 
 namespace std
 {
@@ -45,7 +45,11 @@ namespace std
 
 }
 
+template <size_t Index, typename... _Types>
+auto& get(custom_tuple<_Types...>& _Tuple);
 
+template <size_t Index, typename... _Types>
+auto get(const custom_tuple<_Types...>& _Tuple);
 
 
 template <typename... Types>
@@ -68,8 +72,7 @@ class custom_tuple
             {
                   list_binding_args.reserve(sizeof...(args));
 
-                  [[maybe_unused]]
-                  bool arr[sizeof...(args)] = { (list_binding_args.push_back(std::any(std::ref(args))), false)... };
+                  [[maybe_unused]] bool arr[sizeof...(args)] = { (list_binding_args.push_back(std::any(std::ref(args))), false)... };
             }
       };
 
@@ -105,14 +108,12 @@ class custom_tuple
       template <typename... _Types>
       friend class custom_tuple;
 
-      template <size_t Index>
-      auto& get() noexcept
-      { 
-            using type = typename std::tuple_element<Index, custom_tuple<Types...>>::type;
-            std::reference_wrapper<type> ref = std::any_cast<std::reference_wrapper<type>>(list_binding_args[Index]);
-            return ref.get();
-      }
-      
+      template <size_t Index, class... _Types>
+      friend auto& get(custom_tuple<_Types...>& _Tuple);
+
+      template <size_t Index, class... _Types>
+      friend auto get(const custom_tuple<_Types...>& _Tuple);
+
   private:
       std::vector<std::any> list_binding_args;
 
@@ -130,6 +131,22 @@ class custom_tuple
             (std::any_cast<std::reference_wrapper<t_element>>(list_binding_args[Index])).get() = std::get<Index>(arg);
       }
 
+      template <size_t Index>
+      auto& i_get() noexcept
+      {
+            using type = typename std::tuple_element<Index, custom_tuple<Types...>>::type;
+            std::reference_wrapper<type> ref = std::any_cast<std::reference_wrapper<type>>(list_binding_args[Index]);
+            return ref.get();
+      }
+
+      template <size_t Index>
+      const auto i_get() const noexcept
+      {
+            using type = typename std::tuple_element<Index, custom_tuple<Types...>>::type;
+            std::reference_wrapper<type> ref = std::any_cast<std::reference_wrapper<type>>(list_binding_args[Index]);
+            return ref.get();
+      }
+
 #ifdef PRIVATE_TEST
       FRIEND_TEST(CustomTupleTest, DefaultCtor);
       FRIEND_TEST(CustomTupleTest, CopyCtor);
@@ -141,6 +158,19 @@ class custom_tuple
       FRIEND_TEST(CustomTupleTest, TupleAssignment);
 #endif
 };
+
+template <size_t Index, typename... _Types>
+auto& get(custom_tuple<_Types...>& _Tuple)
+{
+      return _Tuple.i_get<Index>();
+}
+
+template <size_t Index, typename... _Types>
+auto get(const custom_tuple<_Types...>& _Tuple)
+{
+      return _Tuple.i_get<Index>();
+}
+
 
 template <typename... Args>
 auto custom_tie(Args&... args)
