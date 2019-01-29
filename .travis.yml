@@ -7,14 +7,14 @@ addons:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - g++-9
+      - g++-8
 
 before_script:
 - sudo apt-get update -qq
 - sudo apt-get install libgtest-dev
 
 script:
-- CXX=/usr/bin/g++-9 CC=/usr/bin/gcc-9 cmake .
+- CXX=/usr/bin/g++-8 CC=/usr/bin/gcc-8 cmake .
 - cd /usr/src/gtest
 - cmake .
 - make
