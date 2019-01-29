@@ -28,11 +28,9 @@ script:
 - cmake --build .
 - cmake --build . --target test
 - cmake --build . --target package
-- ls *
-- ./src_test/test_tie_tulp
 deploy:
   provider: script
   skip_cleanup: true
   script:
-  - curl -T helloworld-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -urra-roro:$BINTRAY_API_KEY "https://api.bintray.com/content/rra-roro/otus_homework/helloworld/$TRAVIS_BUILD_NUMBER/helloworld-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
+  - curl -T custom_tie_tulp-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -urra-roro:$BINTRAY_API_KEY "https://api.bintray.com/content/rra-roro/otus_homework/custom_tie_tulp/$TRAVIS_BUILD_NUMBER/custom_tie_tulp-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
  
