@@ -51,13 +51,13 @@ template <typename... Types>
 class custom_tuple
 {
   public:
-      template <typename... Types>
-      custom_tuple(const custom_tuple<Types...>& other) : list_binding_args(other.list_binding_args)
+      template <typename... _Types>
+      custom_tuple(const custom_tuple<_Types...>& other) : list_binding_args(other.list_binding_args)
       {
       }
 
-      template <typename... Types>
-      custom_tuple(custom_tuple<Types...>&& other) : list_binding_args(std::move(other.list_binding_args))
+      template <typename... _Types>
+      custom_tuple(custom_tuple<_Types...>&& other) : list_binding_args(std::move(other.list_binding_args))
       {
       }
 
@@ -71,15 +71,15 @@ class custom_tuple
             }
       };
 
-      template <typename... Types>
-      custom_tuple& operator=(const custom_tuple<Types...>& other)
+      template <typename... _Types>
+      custom_tuple& operator=(const custom_tuple<_Types...>& other)
       {
             list_binding_args = other.list_binding_args;
             return *this;
       }
 
-      template <typename... Types>
-      custom_tuple& operator=(custom_tuple<Types...>&& other)
+      template <typename... _Types>
+      custom_tuple& operator=(custom_tuple<_Types...>&& other)
       {
             list_binding_args.swap(other.list_binding_args);
             return *this;
@@ -94,13 +94,13 @@ class custom_tuple
             return this;
       }
 
-      template <typename... Types>
-      void swap(custom_tuple<Types...>& other)
+      template <typename... _Types>
+      void swap(custom_tuple<_Types...>& other)
       {
             list_binding_args.swap(other.list_binding_args);
       }
 
-      template <typename... Types>
+      template <typename... _Types>
       friend class custom_tuple;
 
       template <size_t Index>
