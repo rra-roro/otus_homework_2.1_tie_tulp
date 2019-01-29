@@ -4,6 +4,7 @@
 #include <iostream>
 #include <tuple>
 #include <cassert>
+#include "lib.h"
 
 #include "custom_tie_tuple.h"
 
@@ -23,6 +24,7 @@ auto getPerson()
 
 int main()
 {
+      cout << "custom_tie and custom_tuple classes. Build: " << version() << "\n";
       std::string name, secondName, department;
       std::size_t age;
 
@@ -31,6 +33,11 @@ int main()
       assert(secondName == "Ivanoff");
       assert(age == 23);
       assert(department == "Sale");
+
+      cout << "name == " << name << "\n";
+      cout << "secondName == " << secondName << "\n";
+      cout << "age == " << age << "\n";
+      cout << "department == " << department << "\n";
 
       return 0;
 }
