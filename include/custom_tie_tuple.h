@@ -3,6 +3,7 @@
 #include <any>
 #include <vector>
 #include <tuple>
+#include <functional>
 #include <type_traits>
 
 template <typename... Types>
