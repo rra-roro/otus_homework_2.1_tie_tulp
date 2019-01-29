@@ -25,7 +25,7 @@ auto getPerson()
 
 int main()
 {
-      cout << "custom_tie and custom_tuple classes. Build: " << version() << "\n";
+      cout << "custom_tie and custom_tuple classe. Build: " << version() << "\n";
       std::string name, secondName, department;
       std::size_t age;
 
