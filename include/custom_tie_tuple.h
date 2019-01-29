@@ -68,6 +68,7 @@ class custom_tuple
             {
                   list_binding_args.reserve(sizeof...(args));
 
+                  [[maybe_unused]]
                   bool arr[sizeof...(args)] = { (list_binding_args.push_back(std::any(std::ref(args))), false)... };
             }
       };
