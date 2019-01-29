@@ -9,7 +9,7 @@ add_subdirectory(src)
 add_subdirectory(src_test)   
 
 install(PROGRAMS src/tie_tulp_cli src_test/test_tie_tulp DESTINATION bin)
-install(PROGRAMS googlemock/gtest/libgtest_main.so googlemock/gtest/libgtest.so DESTINATION lib)
+install(PROGRAMS googletest-release-1.8.0/googlemock/gtest/libgtest_main.so googletest-release-1.8.0/googlemock/gtest/libgtest.so DESTINATION lib)
 
 set(CPACK_GENERATOR DEB)
 
