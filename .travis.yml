@@ -2,13 +2,13 @@ language: cpp
 before_script:
 - sudo apt-get install libgtest-dev
 - echo "deb http://archive.ubuntu.com/ubuntu xenial main universe" | sudo tee -a /etc/apt/sources.list
-- sudo apt-get update -qq
+- sudo apt-get update
 - ls /usr/src/gtest
 
 script:
 - cd /usr/src/gtest
-- sudo cmake .
-- sudo make
+- cmake .
+- make
 - sudo cp *.a /usr/lib
 - cd - 
 - cmake .
