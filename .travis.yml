@@ -16,10 +16,12 @@ before_script:
 - CXX=/usr/bin/g++-8 CC=/usr/bin/gcc-8
 - cmake -DBUILD_SHARED_LIBS=ON .
 - make
+- ls *
 - sudo cp -a googletest/include/gtest /usr/include
 - sudo cp -a googlemock/gtest/libgtest_main.so /usr/lib/
 - sudo cp -a googlemock/gtest/libgtest.so /usr/lib/
 - sudo ldconfig -v | grep gtest
+- ls *
 - cd - 
 
 script:
