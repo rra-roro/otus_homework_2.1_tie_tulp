@@ -8,6 +8,9 @@
 template <typename... Types>
 class custom_tuple;
 
+template <class>
+   inline constexpr bool _Always_false = false;
+
 namespace std
 {
       template <class... _Types>
