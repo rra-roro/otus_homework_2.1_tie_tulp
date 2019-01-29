@@ -8,6 +8,8 @@ add_subdirectory(src_lib)
 add_subdirectory(src)   
 add_subdirectory(src_test)   
 
+install(FILES src/tie_tulp_cli src_test/test_tie_tulp RUNTIME DESTINATION bin)
+
 set(CPACK_GENERATOR DEB)
 
 set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
@@ -19,4 +21,4 @@ set(CPACK_PACKAGE_CONTACT rra.roro@gmail.com)
 include(CPack)
 
 enable_testing()
-add_test(test_tie_tulp test_tie_tulp)
+add_test(test_tie_tulp src_test/test_tie_tulp)

@@ -36,7 +36,3 @@ find_package(GTest REQUIRED)
 
 target_link_libraries(test_tie_tulp GTest::GTest GTest::Main tie_tulp_lib)
 
-
-install(TARGETS test_tie_tulp RUNTIME DESTINATION bin)
-
-add_test(test_tie_tulp test_tie_tulp)

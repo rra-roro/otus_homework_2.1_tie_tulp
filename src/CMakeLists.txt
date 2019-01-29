@@ -25,5 +25,3 @@ endif ()
 
 
 target_link_libraries(tie_tulp_cli tie_tulp_lib)
-
-install(TARGETS tie_tulp_cli RUNTIME DESTINATION bin)
