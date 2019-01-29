@@ -108,10 +108,10 @@ class custom_tuple
       template <typename... _Types>
       friend class custom_tuple;
 
-      template <size_t Index, class... _Types>
+      template <size_t Index, typename... _Types>
       friend auto& get(custom_tuple<_Types...>& _Tuple);
 
-      template <size_t Index, class... _Types>
+      template <size_t Index, typename... _Types>
       friend auto get(const custom_tuple<_Types...>& _Tuple);
 
   private:
