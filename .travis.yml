@@ -28,6 +28,8 @@ script:
 - cmake --build .
 - cmake --build . --target test
 - cmake --build . --target package
+- ls *
+- ls src_test/*
 deploy:
   provider: script
   skip_cleanup: true
