@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <string>
 #include <tuple>
 #include <cassert>
 #include "lib.h"
