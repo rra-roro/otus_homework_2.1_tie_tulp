@@ -169,17 +169,33 @@ TEST(CustomTupleUtility, TupleSize)
       ASSERT_TRUE(std::tuple_size<decltype(ctup)>::value == 2);
 }
 
+
+
 TEST(CustomTupleUtility, get)
 {
       std::string str1 = "str1";
       int iVar1 = 10;
-      auto& [a, b] = custom_tuple(str1, iVar1);
 
-      ASSERT_TRUE(a == "str1");
-      ASSERT_TRUE(b == 10);
+      custom_tuple tpl1(str1, iVar1);
+      auto [a1, b1] = tpl1;
+    
+      ASSERT_TRUE(a1 == "str1");
+      ASSERT_TRUE(b1 == 10);
 
-      a = "qqq";
-      b = 20;
+      a1 = "qqq";
+      b1 = 20;
+
+      ASSERT_FALSE(str1 == "qqq");
+      ASSERT_FALSE(iVar1 == 20);
+
+      custom_tuple tpl2(str1, iVar1);
+      auto& [a2, b2] = tpl2;
+
+      ASSERT_TRUE(a2 == "str1");
+      ASSERT_TRUE(b2 == 10);
+
+      a2 = "qqq";
+      b2 = 20;
 
       ASSERT_TRUE(str1 == "qqq");
       ASSERT_TRUE(iVar1 == 20);

@@ -38,15 +38,10 @@ namespace std
           : public tuple_element<_Index - 1, custom_tuple<_Rest...>>
       { // recursive tuple_element definition
       };
+
 }
 
 
-template <size_t _Index, class... _Types>
-auto& get(custom_tuple<_Types...>& _Tuple) noexcept
-{ // get reference to _Index element of tuple
-      using type = typename std::tuple_element<_Index, custom_tuple<_Types...>>::type;
-      return (type&)(std::any_cast<std::reference_wrapper<type>>(_Tuple.list_binding_args[_Index])).get();
-}
 
 
 template <typename... Types>
@@ -105,10 +100,14 @@ class custom_tuple
       template <typename... Types>
       friend class custom_tuple;
 
-      template <size_t _Index, class... _Types>
-      friend auto& get(custom_tuple<_Types...>&) noexcept;
-
-
+      template <size_t Index>
+      auto& get() noexcept
+      { 
+            using type = typename std::tuple_element<Index, custom_tuple<Types...>>::type;
+            std::reference_wrapper<type> ref = std::any_cast<std::reference_wrapper<type>>(list_binding_args[Index]);
+            return ref.get();
+      }
+      
   private:
       std::vector<std::any> list_binding_args;
 
