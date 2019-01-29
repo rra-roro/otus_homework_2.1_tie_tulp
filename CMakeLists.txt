@@ -8,7 +8,7 @@ add_subdirectory(src_lib)
 add_subdirectory(src)   
 add_subdirectory(src_test)   
 
-install(FILES src/tie_tulp_cli src_test/test_tie_tulp RUNTIME DESTINATION bin)
+install(FILES src/tie_tulp_cli src_test/test_tie_tulp DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
 
