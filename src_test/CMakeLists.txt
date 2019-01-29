@@ -21,7 +21,7 @@ if (MSVC)
 else()
 
 	set_target_properties(test_tie_tulp PROPERTIES
-		  CXX_STANDARD 14
+		  CXX_STANDARD 17
 		  CXX_STANDARD_REQUIRED ON
 		  COMPILE_OPTIONS "-Wpedantic;-Wall;-Wextra"
 	)

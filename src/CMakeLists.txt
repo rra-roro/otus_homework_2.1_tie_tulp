@@ -16,7 +16,7 @@ if (MSVC)
 else()
 
 	set_target_properties(tie_tulp_cli PROPERTIES
-		  CXX_STANDARD 14
+		  CXX_STANDARD 17
 		  CXX_STANDARD_REQUIRED ON
 		  COMPILE_OPTIONS "-Wpedantic;-Wall;-Wextra"
 	)
